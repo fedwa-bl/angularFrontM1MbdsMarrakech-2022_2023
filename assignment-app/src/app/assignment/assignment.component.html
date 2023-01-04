@@ -1,0 +1,20 @@
+<h1>{{titre}}</h1>
+
+<mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+  
+
+<h3>liste des devoirs</h3>
+
+<div *ngFor="let assignment of assignments">
+    <p appRendu *ngIf="assignment.rendu;else nonrendu" >le devoir : {{assignment.nom}} est à rendre le :
+        {{assignment.dateDeRendu}}, rendu : {{assignment.rendu}}</p>
+        <ng-template #nonrendu>
+        <p appNonrendu>le devoir assignment.nom n'a pas été rendu</p>
+        </ng-template>
+</div>
